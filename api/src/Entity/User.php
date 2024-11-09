@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use App\Repository\UserRepository;
+use App\State\UserPasswordHasher;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -27,7 +29,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
         ),
         new Post(
             security: "is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_COMPANY_ADMIN')",
-            securityMessage: "Accessible for admin and super admin!"
+            securityMessage: "Accessible for admin and super admin!",
+            processor: UserPasswordHasher::class
         ),
         new Delete(
             security: "is_granted('ROLE_SUPER_ADMIN')",
