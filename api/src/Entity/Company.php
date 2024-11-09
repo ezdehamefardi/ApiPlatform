@@ -30,7 +30,8 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: "is_granted('ROLE_SUPER_ADMIN')",
             securityMessage: "Accessible only for super admin!"
         )
-    ]
+    ],
+    routePrefix: '/api/v1',
 )]
 class Company
 {

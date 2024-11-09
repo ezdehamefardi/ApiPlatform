@@ -1,5 +1,5 @@
 api_platform:
-    title: Hello API Platform
+    title: Future Driver App
     version: 1.0.0
     # Mercure integration, remove if unwanted
     mercure:
@@ -21,3 +21,8 @@ api_platform:
     # change this to true if you use controllers
     use_symfony_listeners: false
     keep_legacy_inflector: false
+    swagger:
+        api_keys:
+            JWT:
+                name: Authorization
+                type: header
