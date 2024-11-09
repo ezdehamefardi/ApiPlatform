@@ -20,10 +20,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ApiResource(
     operations: [
         new GetCollection(
+            uriTemplate: '/users',
             security: "is_granted('ROLE_USER')",
             securityMessage: "You Should login!"
         ),
         new Get(
+            uriTemplate: '/users/{id}',
             security: "is_granted('ROLE_USER')",
             securityMessage: "You should login"
         ),
@@ -33,6 +35,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
             processor: UserPasswordHasher::class
         ),
         new Delete(
+            uriTemplate: '/users/{id}',
             security: "is_granted('ROLE_SUPER_ADMIN')",
             securityMessage: "Accessible for super admin!"
         )
