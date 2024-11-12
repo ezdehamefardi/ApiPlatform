@@ -32,15 +32,20 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "^5.0",
+        "dama/doctrine-test-bundle": "*",
         "doctrine/doctrine-fixtures-bundle": "^3.6",
+        "hautelook/alice-bundle": "^2.13",
+        "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.4.*",
         "symfony/css-selector": "6.4.*",
         "symfony/debug-bundle": "6.4.*",
+        "symfony/http-client": "6.4.*",
         "symfony/maker-bundle": "^1.44",
         "symfony/phpunit-bridge": "6.4.*",
         "symfony/stopwatch": "6.4.*",
         "symfony/var-dumper": "6.4.*",
-        "symfony/web-profiler-bundle": "6.4.*"
+        "symfony/web-profiler-bundle": "6.4.*",
+        "zenstruck/foundry": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,

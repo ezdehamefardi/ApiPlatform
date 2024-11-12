@@ -31,3 +31,9 @@ services:
         tags:
             - { name: api_platform.doctrine.orm.query_extension.collection }
             - { name: api_platform.doctrine.orm.query_extension.item }
+
+    App\DataFixtures\UserFixtures: 
+        public: true
+        
+    App\DataFixtures\AppFixtures:
+        public: true    

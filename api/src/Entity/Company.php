@@ -36,12 +36,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Company
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Please enter a company name')]
     #[Assert\Length(min: 5, max: 100)]
     private ?string $name = null;
 

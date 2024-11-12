@@ -13,6 +13,7 @@ use App\State\UserPasswordHasher;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -45,26 +46,33 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank(message: 'The email field is required.')]
+    #[Assert\Email(message: 'The email is not valid!')]
     private ?string $email = null;
 
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'The roles field is required.')]
     private array $roles = [];
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'The password field is required.')]
     private ?string $password = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Length(min: 3, max: 100)]
+    #[Assert\Regex(pattern: "/^(?=.*[A-Z])[a-zA-Z ]+$/", message: "Between 3 and 100 characters, Only letters and space are allowed.")]
+    #[Assert\NotBlank(message: 'The name field is required.')]
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'users')]
